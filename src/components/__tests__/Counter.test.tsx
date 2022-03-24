@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Counter from './../Counter/Counter';
 
@@ -32,3 +32,18 @@ test('test add btn', ()=>{
     const btnEl = getByTestId('add-btn');
     expect(btnEl.textContent).toBe('+')
 })
+
+test('test change input value', ()=>{
+    const { getByTestId } = render( <Counter/> )
+    const inputEl: any = getByTestId('inputid')
+
+    fireEvent.change(inputEl, {
+        target: {
+            value: '5'
+        }
+    })
+
+    expect(inputEl.value).toBe('5')
+})
+
+// https://www.youtube.com/watch?v=GLSSRtnNY0g&t=1649s 

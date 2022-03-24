@@ -8,7 +8,7 @@ const Counter = () => {
             <p data-testid='header'>My Conter</p>
             <h2 data-testid='counter'>{counterState}</h2>
             <button data-testid='subtract-btn'>-</button>
-            <input data-testid='inputid' value={inputValue} type="number" name="" id="" />
+            <input data-testid='inputid' value={inputValue} onChange={(e: React.ChangeEvent<HTMLInputElement>)=>{setInputValue(Number(e.target.value))}} type="number" name="" id="" />
             <button data-testid='add-btn'>+</button>
         </div>
     );
